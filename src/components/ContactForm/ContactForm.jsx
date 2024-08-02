@@ -1,10 +1,12 @@
 import { Field, Form, Formik } from "formik";
 import css from "./ContactForm.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { addContact } from "../../redux/contactsSlice";
 
 const ContactForm = () => {
+  // const filter = useSelector(state = useSelector((state) => state.filter.filter))
+  // const contacts = useSelector(state = useSelector((state) => state.contacts.contacts))
   const dispatch = useDispatch();
   const initialValues = {
     name: "",
@@ -19,9 +21,9 @@ const ContactForm = () => {
     };
 
     dispatch(addContact(newContact));
-    console.log(newContact);
     options.resetForm();
   };
+
   return (
     <>
       <h1 className={css.title}>Phonebook</h1>

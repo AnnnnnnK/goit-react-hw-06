@@ -1,10 +1,15 @@
+import { useDispatch } from "react-redux";
+import { changeFilter } from "../../redux/filtersSlice";
+
 const Filter = () => {
+  const dispatch = useDispatch();
+
   return (
     <input
-      //   className={css.input}
       type="search"
-      //   value={value}
-      //   onChange={onChange}
+      onChange={(e) => {
+        dispatch(changeFilter(e.target.value));
+      }}
       placeholder="Find name"
     />
   );
