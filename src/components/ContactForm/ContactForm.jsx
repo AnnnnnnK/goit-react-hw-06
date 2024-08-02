@@ -5,8 +5,6 @@ import { nanoid } from "@reduxjs/toolkit";
 import { addContact } from "../../redux/contactsSlice";
 
 const ContactForm = () => {
-  // const filter = useSelector(state = useSelector((state) => state.filter.filter))
-  // const contacts = useSelector(state = useSelector((state) => state.contacts.contacts))
   const dispatch = useDispatch();
   const initialValues = {
     name: "",
