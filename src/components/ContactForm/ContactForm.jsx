@@ -2,9 +2,12 @@ import { Field, Form, Formik } from "formik";
 import css from "./ContactForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addContact } from "../../redux/contactsSlice";
+import { addContact, selectContacts } from "../../redux/contactsSlice";
+import { Notify } from "notiflix";
 
 const ContactForm = () => {
+  const contacts = useSelector(selectContacts);
+
   const dispatch = useDispatch();
   const initialValues = {
     name: "",
@@ -17,6 +20,15 @@ const ContactForm = () => {
       number: values.number,
       id: nanoid(),
     };
+
+    const nameIsAdded = contacts.items.some(
+      ({ name }) => name.toLowerCase() === newContact.name.toLowerCase()
+    );
+
+    if (nameIsAdded) {
+      Notify.warning("Name is already added.");
+      return;
+    }
 
     dispatch(addContact(newContact));
     options.resetForm();
