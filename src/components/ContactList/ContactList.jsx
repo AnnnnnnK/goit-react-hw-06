@@ -16,7 +16,7 @@ const ContactList = () => {
   const dispatch = useDispatch();
   return (
     <>
-      <h2 className={css.title}>Contacts</h2>
+      {contacts.items.length > 0 && <h2 className={css.title}>Contacts</h2>}
       <ul>
         {contactsToShow.map(({ name, number, id }) => (
           <li key={id} className={css.item}>
