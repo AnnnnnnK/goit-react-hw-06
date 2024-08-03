@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import css from "./ContactForm.module.css";
+import css from "./ContactsForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { addContact, selectContacts } from "../../redux/contactsSlice";
@@ -21,7 +21,7 @@ const ContactForm = () => {
       id: nanoid(),
     };
 
-    const nameIsAdded = contacts.items.some(
+    const nameIsAdded = contacts.some(
       ({ name }) => name.toLowerCase() === newContact.name.toLowerCase()
     );
 
