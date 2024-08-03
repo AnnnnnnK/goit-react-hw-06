@@ -1,17 +1,23 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeFilter } from "../../redux/filtersSlice";
+import { selectContacts } from "../../redux/contactsSlice";
 
 const Filter = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   return (
-    <input
-      type="search"
-      onChange={(e) => {
-        dispatch(changeFilter(e.target.value));
-      }}
-      placeholder="Find name"
-    />
+    <>
+      {contacts.items.length > 0 && (
+        <input
+          type="search"
+          onChange={(e) => {
+            dispatch(changeFilter(e.target.value));
+          }}
+          placeholder="Find name"
+        />
+      )}
+    </>
   );
 };
 
