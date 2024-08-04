@@ -18,7 +18,11 @@ const ContactList = () => {
     <>
       {contacts.length > 0 && <h2 className={css.title}>Contacts</h2>}
       <ul>
-        <Contact contact={contactsToShow} />
+        {contactsToShow.map((contact) => (
+          <li key={contact.id}>
+            <Contact contact={contact} />
+          </li>
+        ))}
       </ul>
     </>
   );
